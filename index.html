@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Flipping Cards</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div flex-container>
+<div id="flashcards-app">
+  <div class="form">
+    <p>Question: <input type="text" v-model="questionInput" placeholder="Question"/></p>Answer: <input type="text" v-model="answerInput" placeholder="Answer"/></p>
+    
+        <p>Category :
+    <input v-model="categoryInput" type="radio" name="radio" value="math"/>Math
+   <input v-model="categoryInput" type="radio" name="radio" value="science"/>Science
+    <input v-model="categoryInput" type="radio" name="radio" value="history"/>History
+  
+  <button v-on:click="newCard">Submit New Card</button>
+  </p>
+    
+    
+  </div>
+  
+  <div class ="break">
+  </div>
+  
+  
+ <div class="card" v-for="(card, index) in cards" v-on:click.left="flipCard(index)">
+    <div class="top" v-bind:class="card.category"></div>
+    <div class="side1" v-bind:class="{hide: card.flipped}">
+      <h1>{{card.question}}
+      </div>
+     <div class="side2" v-bind:class="{hide: !card.flipped}">
+       <h1>{{card.answer}}</h1>
+      </div>
+      
+      
+   </div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
